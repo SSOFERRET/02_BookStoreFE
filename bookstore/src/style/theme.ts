@@ -7,7 +7,7 @@ interface Theme {
     color: Record<ColorKey, string>;
     heading: {
         [key in HeadingSize]: {
-            fontsize: string;
+            fontSize: string;
         }
     }
 }
@@ -20,13 +20,13 @@ export const light : Theme = {
     },
     heading: {
         large: {
-            fontsize: "2rem"
+            fontSize: "2rem"
         },
         medium: {
-            fontsize: "1.5rem"
+            fontSize: "1.5rem"
         },
         small: {
-            fontsize: "1rem"
+            fontSize: "1rem"
         }
     }
 };
