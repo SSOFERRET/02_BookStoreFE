@@ -9,11 +9,11 @@ import { useContext, useState } from "react";
 import { ThemeContext } from "./context/themeContext";
 
 function App() {
-  const themeName = useContext(ThemeContext);
+  const { themeName, setThemeName } = useContext(ThemeContext);
   return (
     <ThemeProvider theme={getTheme(themeName)}>
       <GlobalStyle themeName={themeName}/>
-      <ThemeSwitcher themeName={themeName} setThemeName={() => {}}/>
+      <ThemeSwitcher themeName={themeName} setThemeName={setThemeName}/>
       <Layout children={<Home />} />
     </ThemeProvider>
   );
