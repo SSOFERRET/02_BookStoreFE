@@ -5,14 +5,15 @@ import { GlobalStyle } from './style/global';
 import { ThemeProvider } from "styled-components";
 import { ThemeName, light, dark, getTheme} from './style/theme';
 import ThemeSwitcher from "./components/header/ThemeSwitcher";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ThemeContext } from "./context/themeContext";
 
 function App() {
-  const [themeName, setThemeName] = useState<ThemeName>('light');
+  const themeName = useContext(ThemeContext);
   return (
     <ThemeProvider theme={getTheme(themeName)}>
       <GlobalStyle themeName={themeName}/>
-      <ThemeSwitcher themeName={themeName} setThemeName={setThemeName}/>
+      <ThemeSwitcher themeName={themeName} setThemeName={() => {}}/>
       <Layout children={<Home />} />
     </ThemeProvider>
   );
