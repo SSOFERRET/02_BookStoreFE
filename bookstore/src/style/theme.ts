@@ -1,20 +1,38 @@
-type ColorKey = "primary" | "background";
+export type ColorKey = "primary" | "background";
 export type ThemeName = "light" | "dark";
+export type HeadingSize = 'large' | 'medium' | 'small';
 
 interface Theme {
     name: ThemeName;
-    color: Record<ColorKey, string>
+    color: Record<ColorKey, string>;
+    heading: {
+        [key in HeadingSize]: {
+            fontsize: string;
+        }
+    }
 }
 
 export const light : Theme = {
     name: 'light',
     color: {
         primary: 'brown',
-        background: 'lightgray'
+        background: 'lightgray', 
     },
+    heading: {
+        large: {
+            fontsize: "2rem"
+        },
+        medium: {
+            fontsize: "1.5rem"
+        },
+        small: {
+            fontsize: "1rem"
+        }
+    }
 };
 
 export const dark : Theme = {
+    ...light,
     name: 'dark',
     color: {
         primary: 'coral',
