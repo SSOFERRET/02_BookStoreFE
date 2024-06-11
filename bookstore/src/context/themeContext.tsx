@@ -12,3 +12,11 @@ export const state = {
 }
 
 export const ThemeContext = createContext<State>(state);
+
+export const BookStoreThemeProvider = ( {children}: {children: React.ReactNode} ) => {
+    return (
+        <ThemeContext.Provider value = {state} >
+            { children }
+        </ThemeContext.Provider>
+    )
+}
