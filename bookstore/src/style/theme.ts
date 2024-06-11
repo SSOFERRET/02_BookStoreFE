@@ -1,12 +1,12 @@
+type ColorKey = "primary" | "background";
+type ThemeName = "light" | "dark";
+
 interface Theme {
-    name: string;
-    color: {
-        primary: string;
-        background: string;
-    };
+    name: ThemeName;
+    color: Record<ColorKey, string>
 }
 
-export const light = {
+export const light : Theme = {
     name: 'light',
     color: {
         primary: 'brown',
@@ -14,8 +14,8 @@ export const light = {
     },
 };
 
-export const dark = {
-    name: 'dart',
+export const dark : Theme = {
+    name: 'dark',
     color: {
         primary: 'coral',
         background: 'midnightblue',
