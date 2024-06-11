@@ -4,11 +4,13 @@ import Home from "./pages/Home";
 import { GlobalStyle } from './style/global';
 import { ThemeProvider } from "styled-components";
 import {light, dark} from './style/theme';
+import ThemeSwitcher from "./components/header/ThemeSwitcher";
 
 function App() {
   return (
     <ThemeProvider theme={light}>
       <GlobalStyle themeName="light"/>
+      <ThemeSwitcher />
       <Layout children={<Home />} />
     </ThemeProvider>
   );
