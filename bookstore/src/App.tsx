@@ -6,16 +6,14 @@ import { ThemeProvider } from "styled-components";
 import { ThemeName, light, dark, getTheme} from './style/theme';
 import ThemeSwitcher from "./components/header/ThemeSwitcher";
 import { useContext, useState } from "react";
-import { ThemeContext } from "./context/themeContext";
+import { BookStoreThemeProvider, ThemeContext } from "./context/themeContext";
 
 function App() {
-  const { themeName, setThemeName } = useContext(ThemeContext);
   return (
-    <ThemeProvider theme={getTheme(themeName)}>
-      <GlobalStyle themeName={themeName}/>
-      <ThemeSwitcher themeName={themeName} setThemeName={setThemeName}/>
-      <Layout children={<Home />} />
-    </ThemeProvider>
+    <BookStoreThemeProvider>
+        {/* <ThemeSwitcher /> */}
+        <Layout children={<Home />} />
+    </BookStoreThemeProvider>
   );
 }
 
