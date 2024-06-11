@@ -13,7 +13,7 @@ function ThemeSwitcher() {
     //     setThemeName(themeName === 'light' ? 'dark' : 'light');
     // };
     return (
-        <button onClick={() => toggleTheme}>{ themeName }</button>
+        <button onClick={toggleTheme}>{ themeName }</button>
     )
 }
 

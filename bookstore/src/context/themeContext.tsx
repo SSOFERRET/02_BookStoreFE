@@ -5,12 +5,12 @@ import { GlobalStyle } from "../style/global";
 
 interface State {
     themeName: ThemeName;
-    toggleTheme: (themeName: ThemeName) => void;
+    toggleTheme: () => void;
 }
 
 export const state = {
     themeName: 'light' as ThemeName, 
-    toggleTheme: (themeName: ThemeName) => {}
+    toggleTheme: () => {}
 }
 
 export const ThemeContext = createContext<State>(state);
