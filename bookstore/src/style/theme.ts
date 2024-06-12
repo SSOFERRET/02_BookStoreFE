@@ -1,4 +1,4 @@
-export type ColorKey = "primary" | "background";
+export type ColorKey = "primary" | "background" | "border" | "text";
 export type ThemeName = "light" | "dark";
 export type HeadingSize = 'large' | 'medium' | 'small';
 export type ButtonSize = 'large' | 'medium' | 'small';
@@ -34,6 +34,8 @@ export const light : Theme = {
     color: {
         primary: 'brown',
         background: 'lightgray', 
+        border:'grey',
+        text: 'black'
     },
     heading: {
         large: {
@@ -81,6 +83,8 @@ export const dark : Theme = {
     color: {
         primary: 'coral',
         background: 'midnightblue',
+        border: 'grey',
+        text: 'black'
     }
 };
 
