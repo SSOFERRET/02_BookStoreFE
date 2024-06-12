@@ -2,9 +2,6 @@ import { styled } from "styled-components";
 import logo from './../../assets/images/logo.png';
 import {FaSignInAlt, FaRegUser} from 'react-icons/fa';
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { Category } from "../../models/category.model";
-import { fecthCategory } from "../../api/category.api";
 import { useCategory } from "../../hooks/useCategory";
 
 function Header() {
