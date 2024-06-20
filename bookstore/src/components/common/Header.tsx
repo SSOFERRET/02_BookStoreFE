@@ -36,7 +36,7 @@ function Header() {
                         <Link to="/login">
                             <FaSignInAlt /> 로그인
                         </Link>
-                        <Link to="/join">
+                        <Link to="/signup">
                             <FaRegUser /> 회원가입
                         </Link>
                     </li>
