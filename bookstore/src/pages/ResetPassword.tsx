@@ -5,7 +5,7 @@ import Button from '../components/common/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
-import { signup } from '../api/auth.api';
+import { resetPassword, resetRequest, signup } from '../api/auth.api';
 import { useAlert } from '../hooks/useAlert';
 import { SignupStyle } from './Signup';
 
@@ -27,9 +27,14 @@ function ResetPassword() {
 
     const onSubmit = (data: SignupProps) => {
         if (resetRequested) {
-
+            resetPassword(data).then(() => {
+                showAlert("비밀번호가 초기화 되었습니다.");
+                navigate("/login");
+            })
         } else {
-            
+            resetRequest(data).then(() => {
+                setResetRequested(true);
+            });
         }
     };
 
