@@ -16,8 +16,8 @@ function Books() {
         <BooksStyle>
             <BooksFilter />
             <BooksViewSwitcher />
-            <BooksList books={books}  />
-            <BooksEmpty />
+            {books.length > 0 && <BooksList books={books} />}
+            {books.length === 0 && <BooksEmpty />}
             <Pagination />
         </BooksStyle>
         </>
