@@ -3,6 +3,9 @@ import Button from "../common/Button";
 import { FaList, FaTh } from "react-icons/fa";
 import { useSearchParams } from "react-router-dom";
 import { QUERYSTRING } from "../constants/querystring";
+import { useEffect } from "react";
+
+export type ViewMode = "grid" | "list";
 
 const viewOptions = [
     {
@@ -18,11 +21,17 @@ const viewOptions = [
 function BooksViewSwitcher() {
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const handleSwitch = (value: string) => {
+    const handleSwitch = (value: ViewMode) => {
         const newSearchParams = new URLSearchParams(searchParams);
         newSearchParams.set(QUERYSTRING.VIEW, value);
         setSearchParams(newSearchParams);
     }
+
+    useEffect(() => {
+        if (!searchParams.get(QUERYSTRING.VIEW)) {
+            handleSwitch("grid" as ViewMode);
+        }
+    }, []);
 
     return (
         <BooksViewSwitcherStyle>
@@ -32,7 +41,7 @@ function BooksViewSwitcher() {
                     scheme={searchParams.get(QUERYSTRING.VIEW) === option.value ? 
                         "primary" : "normal"
                     }
-                    onClick={() => handleSwitch(option.value)}>
+                    onClick={() => handleSwitch(option.value as ViewMode)}>
                         {option.icon}
                     </Button>
                 ))
