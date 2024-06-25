@@ -25,7 +25,8 @@ function BooksList({ books }: Props) {
         <BooksListStyle view={view}>
             {
                 books?.map((item) => (
-                    <BookItem key={item.book_id} book={item} />
+                    <BookItem key={item.book_id} book={item}
+                    view={view} />
                 ))
             }
         </BooksListStyle>
