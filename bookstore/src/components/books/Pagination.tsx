@@ -31,7 +31,7 @@ function Pagination({ pagination }: Props) {
                                 <li>
                                     <Button size="small" 
                                     scheme={index + 1 === currentPage ?
-                                        "primary" : "normals"
+                                        "primary" : "normal"
                                     }
                                     onClick={() => handleClickPage(index + 1)}>
                                         {index + 1}
