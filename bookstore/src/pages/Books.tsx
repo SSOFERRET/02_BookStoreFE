@@ -21,7 +21,7 @@ function Books() {
             
             {!isEmpty && <BooksList books={books} />}
             {isEmpty && <BooksEmpty />}
-            <Pagination />
+            <Pagination pagination={pagination} />
         </BooksStyle>
         </>
     )
