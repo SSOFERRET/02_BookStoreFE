@@ -58,25 +58,72 @@ function BookDetail() {
                     <img src={getImgSrc(book.img)} 
                     alt={book.title}  />
                 </div>
-                <Title size="large" color="text">
-                    {book.title}
-                </Title>
-                {
-                    bookInfoList.map((item) => (
-                        <dl>
-                            <dt>{item.label}</dt>
-                            <dd>{ item.filter ? item.filter(book)
-                            : book[item.key as keyof IBookDetail]}</dd>
-                        </dl>
-                    ))
-                }
+                <div className="info">
+                    <Title size="large" color="text">
+                        {book.title}
+                    </Title>
+                    {
+                        bookInfoList.map((item) => (
+                            <dl>
+                                <dt>{item.label}</dt>
+                                <dd>{ item.filter ? item.filter(book)
+                                : book[item.key as keyof IBookDetail]}</dd>
+                            </dl>
+                        ))
+                    }
+                    <p className="summary">{book.summary}</p>
+                    <div className="like">
+                        라이크
+                    </div>
+                    <div className="cart">
+                        장바구니
+                    </div>
+                </div>
             </header>
+            <div className="content">
+                <Title size="medium">상세 설명</Title>
+                <p className="detail">{book.detail}</p>
+                <Title size="medium">목차</Title>
+                <p className="contents">{book.contents}</p>
+            </div>
         </BookDetailStyle>
     )
 }
 
 const BookDetailStyle = styled.div`
-    
+    .header {
+        display: flex;
+        align-items: start;
+        gap: 24px;
+        padding: 0 0 24px 0;
+
+        .img {
+            flex: 1;
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+        
+        .info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            dl {
+                display: flex;
+                margin: 0;
+                dt {
+                    width: 80px;
+                    color: ${({ theme }) => theme.color.secondary};
+                }
+                a {
+                    color: ${({ theme }) => theme.color.primary};
+                }
+            }
+        }
+    }
 `;
 
 export default BookDetail;
