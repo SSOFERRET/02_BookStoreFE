@@ -3,6 +3,7 @@ import { Cart } from "../../models/cart.model";
 import Title from "../common/Title";
 import { formatNumber } from "../../utils/format";
 import Button from "../common/Button";
+import CheckIconButton from "../common/CheckIconButton";
 
 interface Props {
     cart: Cart;
@@ -12,7 +13,10 @@ function CartItem({ cart }: Props) {
     return (
         <CartItemStyle>
             <div className="info">
-                <div>체크 버튼</div>
+                <div>
+                    <CheckIconButton isChecked={true} 
+                    onCheck={() => {}}/>
+                </div>
                 <div>
                     <Title size="medium">{cart.title}</Title>
                     <p className="summary">{cart.summary}</p>
