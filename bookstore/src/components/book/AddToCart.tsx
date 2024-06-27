@@ -3,10 +3,9 @@ import Button from "../common/Button";
 import InputText from "../common/InputText";
 import { BookDetail } from "../../models/book.model";
 import { useState } from "react";
-import { addToCart as fetchAddToCart } from "../../api/carts.api";
 import { useAlert } from "../../hooks/useAlert";
 import { Link } from "react-router-dom";
-// import { useAuthStore } from "../../store/authStore";
+import { useBookDetail } from "../../hooks/useBookDetail";
 
 interface Props {
     book: BookDetail
@@ -14,7 +13,7 @@ interface Props {
 
 function AddToCart({ book }: Props) {
     const [quantity, setQuantity] = useState<number>(1);
-    const [cartAdded, setCartAdded] = useState<boolean>(false);
+    const { addToCart, cartAdded } = useBookDetail(book.book_id.toString());
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setQuantity(Number(e.target.value));
@@ -27,18 +26,6 @@ function AddToCart({ book }: Props) {
     const handleDecrease = () => {
         if (quantity === 1) return;
         setQuantity(quantity - 1);
-    }
-
-    const addToCart = () => {
-        fetchAddToCart({
-            book_id: book.book_id,
-            quantity: quantity
-        }).then(() => {
-            setCartAdded(true);
-            setTimeout(() => {
-                setCartAdded(false);
-            }, 3000);
-        })
     }
 
     return (
@@ -56,7 +43,7 @@ function AddToCart({ book }: Props) {
                 </Button>
             </div>
             <Button size="medium" scheme="primary"
-            onClick={addToCart}>
+            onClick={() => addToCart(book, quantity)}>
                 장바구니 담기
             </Button>
             { cartAdded && (
