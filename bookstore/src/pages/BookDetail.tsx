@@ -79,7 +79,7 @@ function BookDetail() {
                         <LikeButton book={book} onClick={likeToggle} />
                     </div>
                     <div className="cart">
-                        <AddToCart />
+                        <AddToCart book={book}/>
                     </div>
                 </div>
             </header>
