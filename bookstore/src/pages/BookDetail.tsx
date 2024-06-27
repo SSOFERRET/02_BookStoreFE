@@ -7,6 +7,8 @@ import { BookDetail as IBookDetail} from "../models/book.model";
 import { formatDate, formatNumber } from "../utils/format";
 import { Link } from "react-router-dom";
 import EllipsisBox from "../components/common/EllipsisBox";
+import LikeButton from "../components/book/LikeButton";
+import AddToCart from "../components/book/AddToCart";
 
 const bookInfoList = [
     {
@@ -48,7 +50,7 @@ const bookInfoList = [
 
 function BookDetail() {
     const { bookId } = useParams();
-    const { book } = useBookDetail(bookId);
+    const { book, likeToggle } = useBookDetail(bookId);
 
     if (!book) return null;
 
@@ -74,10 +76,10 @@ function BookDetail() {
                     }
                     <p className="summary">{book.summary}</p>
                     <div className="like">
-                        라이크
+                        <LikeButton book={book} onClick={likeToggle} />
                     </div>
                     <div className="cart">
-                        장바구니
+                        <AddToCart />
                     </div>
                 </div>
             </header>
