@@ -3,9 +3,10 @@ import Title from "../components/common/Title"
 import CartItem from "../components/cart/CartItem";
 import { useCart } from "../hooks/useCart";
 import { useState } from "react";
+import { deleteCart } from "../api/carts.api";
 
 function Cart() {
-    const { carts } = useCart();
+    const { carts, deleteCartItem } = useCart();
     const [ checkedItems, setCheckedItems ] = useState<number[]>([]);
 
     const handleCheckItem = (id: number) => {
@@ -14,13 +15,17 @@ function Cart() {
         return setCheckedItems([...checkedItems, id])
     }
 
+    const handleDeleteItem = (id: number) => {
+        deleteCartItem(id);
+    }
+
     return (
         <CartStyle>
             <Title size="large">장바구니</Title>
             <div className='content'>
                 {
                     carts.map((item) => (
-                        <CartItem cart={item} key={item.cart_item_id} checkedItems={checkedItems} onCheck={handleCheckItem}/>
+                        <CartItem cart={item} key={item.cart_item_id} checkedItems={checkedItems} onCheck={handleCheckItem} onDelete={handleDeleteItem} />
                     ))
                 }
             </div>
