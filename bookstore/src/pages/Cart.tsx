@@ -94,7 +94,7 @@ function Cart() {
     )
 }
 
-const CartStyle = styled.div`
+export const CartStyle = styled.div`
     display: flex;
     gap: 24px;
     justify-content: space-between;
@@ -111,6 +111,16 @@ const CartStyle = styled.div`
         display: flex;
         flex-direction: column;
         gap: 24px;
+    }
+
+    .order-info {
+        h1 {
+            padding: 0 0 24px 0;
+        }
+
+        border: 1px solid ${({ theme }) => theme.color.border};
+        border-radius: ${({ theme }) => theme.borderRadius.default};
+        padding: 12px;
     }
 `;
 
