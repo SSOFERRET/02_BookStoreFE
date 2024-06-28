@@ -5,6 +5,7 @@ import { formatNumber } from "../../utils/format";
 import Button from "../common/Button";
 import CheckIconButton from "../common/CheckIconButton";
 import { useMemo } from "react";
+import { useAlert } from "../../hooks/useAlert";
 
 interface Props {
     cart: Cart;
@@ -19,12 +20,16 @@ function CartItem({ cart, checkedItems, onCheck, onDelete }: Props) {
         return checkedItems.includes(cart.cart_item_id);
     }, [checkedItems, cart.cart_item_id]);
 
+    const {showConfirm} = useAlert();
+
     const handleCheck = () => {
         onCheck(cart.cart_item_id);
     };
 
     const handleDelete = () => {
-        onDelete(cart.cart_item_id);
+        showConfirm("정말 삭제하시겠습니까?", () => {
+            onDelete(cart.cart_item_id);
+        })
     }
 
     return (
