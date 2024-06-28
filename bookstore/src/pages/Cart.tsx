@@ -13,7 +13,7 @@ import { OrderSheet } from "../models/order.model";
 import { useNavigate } from "react-router-dom";
 
 function Cart() {
-    const {showAlert} = useAlert();
+    const {showAlert, showConfirm} = useAlert();
     const navigate = useNavigate();
 
     const { carts, isEmpty, deleteCartItem } = useCart();
@@ -60,7 +60,10 @@ function Cart() {
             firstBookTitle: carts.filter((cart) => cart.cart_item_id === checkedItems[0])[0].title
         };
 
-        navigate("/order", { state: orderData });
+        showConfirm("주문하시겠습니까?", () => {
+            navigate("/order", { state: orderData });
+        })
+
     }
 
     return (
