@@ -122,6 +122,35 @@ export const CartStyle = styled.div`
         border-radius: ${({ theme }) => theme.borderRadius.default};
         padding: 12px;
     }
+
+    .delivery {
+        fieldset {
+            border: 0;
+            margin: 0;
+            padding: 0 0 12px 0;
+            display: flex;
+            justify-content: start;
+            gap: 8px;
+            
+            label {
+                width: 80px;
+            }
+
+            .input {
+                flex: 1;
+                input {
+                    width: 100%;
+                }
+            }
+        }
+
+        .error-text {
+            color: red;
+            margin: 0;
+            padding: 0 0 12px 0;
+            text-align: right;
+        }
+    }
 `;
 
 export default Cart;
