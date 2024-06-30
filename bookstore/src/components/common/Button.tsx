@@ -9,15 +9,17 @@ interface Props extends React.ButtonHTMLAttributes
     scheme: ButtonScheme;
     disabled?: boolean;
     isLoading?: boolean;
+    type?: "button" | "submit";
 }
 
-function Button({children, size, scheme, disabled, isLoading, onClick} : Props) {
+function Button({children, size, scheme, disabled, isLoading, onClick, type} : Props) {
     return (
         <ButtonStyle 
         size={size} 
         scheme={scheme} 
         disabled={disabled}
         isLoading={isLoading}
+        type={type}
         onClick={onClick}>
             { children }
         </ButtonStyle>
