@@ -7,6 +7,6 @@ export const order = async (orderData: OrderSheet) => {
 };
 
 export const fetchOrders = async () => {
-    const response = await httpClient.get<Order>("/orders");
+    const response = await httpClient.get<Order[]>("/orders");
     return response.data;
 };
