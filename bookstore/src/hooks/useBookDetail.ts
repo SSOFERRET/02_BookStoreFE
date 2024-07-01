@@ -72,9 +72,10 @@ export const useBookDetail = (bookId: string | undefined) => {
         if (!book) return;
 
         addBookReview(book.book_id.toString(), data).then((res) => {
-            fetchBookReview(book.book_id.toString()).then((reviews) => {
-                setReview(reviews);
-            })
+            // fetchBookReview(book.book_id.toString()).then((reviews) => {
+            //     setReview(reviews);
+            // })
+            showAlert(res?.message);
         })
     }
 
