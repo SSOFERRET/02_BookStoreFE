@@ -25,7 +25,7 @@ export const addReview = http.post("http://localhost:9999/reviews/:bookId", () =
             message: "리뷰가 등록되었습니다.",
         },
         {
-            status: 2001
+            status: 201
         }
     )
 })
