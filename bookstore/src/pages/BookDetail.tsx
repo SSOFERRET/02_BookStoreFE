@@ -51,7 +51,7 @@ const bookInfoList = [
 
 function BookDetail() {
     const { bookId } = useParams();
-    const { book, likeToggle, reviews } = useBookDetail(bookId);
+    const { book, likeToggle, reviews, addReview } = useBookDetail(bookId);
 
     if (!book) return null;
 
@@ -90,7 +90,7 @@ function BookDetail() {
                 <Title size="medium">목차</Title>
                 <p className="contents">{book.contents}</p>
                 <Title size="medium">리뷰</Title>
-                <BookReview reviews={reviews} />
+                <BookReview reviews={reviews} onAdd={addReview} />
             </div>
         </BookDetailStyle>
     )
