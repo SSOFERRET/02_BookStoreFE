@@ -56,4 +56,6 @@ export const requestHandler = async <T>(method: RequestMethod, url: string, payl
         response = await httpClient.delete(url);
         break;
     }
+
+    return response.data;
 };
