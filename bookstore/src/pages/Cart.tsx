@@ -1,15 +1,14 @@
 import styled from "styled-components"
-import Title from "../components/common/Title"
-import CartItem from "../components/cart/CartItem";
-import { useCart } from "../hooks/useCart";
+import Title from "@/components/common/Title"
+import CartItem from "@/components/cart/CartItem";
+import { useCart } from "@/hooks/useCart";
 import { useMemo, useState } from "react";
-import { deleteCart } from "../api/carts.api";
-import Empty from "../components/books/Empty";
+import Empty from "@/components/books/Empty";
 import { FaShoppingCart } from "react-icons/fa";
-import CartSummary from "../components/cart/CartSummary";
-import Button from "../components/common/Button";
-import { useAlert } from "../hooks/useAlert";
-import { OrderSheet } from "../models/order.model";
+import CartSummary from "@/components/cart/CartSummary";
+import Button from "@/components/common/Button";
+import { useAlert } from "@/hooks/useAlert";
+import { OrderSheet } from "@/models/order.model";
 import { useNavigate } from "react-router-dom";
 
 function Cart() {

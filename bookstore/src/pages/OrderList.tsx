@@ -3,9 +3,12 @@ import Title from '../components/common/Title';
 import { useOrders } from '../hooks/useOrders';
 import { formatDate, formatNumber } from '../utils/format';
 import Button from '../components/common/Button';
+import React from 'react';
 
 function OrderList () {
     const { orders, selectedItemId, selectOrderItem } = useOrders();
+    console.log("orders:", orders);
+    console.log("selectedItemId:", selectedItemId);
 
     return (
         <>
@@ -28,7 +31,7 @@ function OrderList () {
                     <tbody>
                         {
                             orders.map((order) => (
-                                <>
+                                <React.Fragment key={order.order_id}>
                                 <tr>
                                     <td>{order.order_id}</td>
                                     <td>{formatDate(order.created_at, "YYYY.MM.DD")}</td>
@@ -49,6 +52,7 @@ function OrderList () {
                                             <tr>
                                                 <td></td>
                                                 <td colSpan={8}>
+                                                    <ul className='detail'>
                                                     {
                                                         order.detail &&
                                                         order.detail.map((item) => (
@@ -61,11 +65,12 @@ function OrderList () {
                                                             </li>
                                                         ))
                                                     }
+                                                    </ul>
                                                 </td>
                                             </tr>
                                         )
                                     }
-                                </>
+                                </React.Fragment>
                             ))
                         }
                         <tr></tr>
@@ -93,6 +98,19 @@ const OrderListStyle = styled.div`
             border-bottom: 1px solid ${({theme}) => theme.color.border};
             text-align: center;
             min-width: 90px;
+        }
+
+        .detail {
+            margin: 0;
+            li {
+                list-style: square;
+                text-align: center;
+                div {
+                    display: flex;
+                    padding: 8px 12px;
+                    gap: 8px;
+                }
+            }
         }
     }
 `;

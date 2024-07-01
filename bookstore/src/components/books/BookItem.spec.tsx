@@ -1,7 +1,6 @@
-import React from "react";
-import { getByAltText, render } from "@testing-library/react";
-import BookItem from "./BookItem";
-import { BookStoreThemeProvider } from "../../context/themeContext";
+import { render } from "@testing-library/react";
+import BookItem from "@/components/books/BookItem";
+import { BookStoreThemeProvider } from "@/context/themeContext";
 
 const dummyBook = {
     book_id: 1,

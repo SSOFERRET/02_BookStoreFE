@@ -1,4 +1,4 @@
-import { Order, OrderDetailItem, OrderSheet } from "../models/order.model";
+import { Order, OrderDetailItem, OrderSheet } from "@/models/order.model";
 import { httpClient } from "./http";
 
 export const order = async (orderData: OrderSheet) => {
