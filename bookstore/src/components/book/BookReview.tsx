@@ -19,7 +19,9 @@ function BookReview({ reviews }: Props) {
 }
 
 const BookReviewStyle = styled.div`
-
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 `;
 
 export default BookReview;
