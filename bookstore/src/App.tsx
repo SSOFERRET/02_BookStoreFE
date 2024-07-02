@@ -14,6 +14,7 @@ import Order from "@/pages/Order";
 import OrderList from "@/pages/OrderList";
 import { QueryClientProvider } from "react-query";
 import { queryClient } from "./api/queryClient";
+import ToastContainer from "./components/common/toast/ToastContainter";
 
 const routeList = [
   {
@@ -74,6 +75,7 @@ function App() {
       <BookStoreThemeProvider>
         <ThemeSwitcher />
         <RouterProvider router={router} />
+        <ToastContainer />
       </BookStoreThemeProvider>
     </QueryClientProvider>
     
