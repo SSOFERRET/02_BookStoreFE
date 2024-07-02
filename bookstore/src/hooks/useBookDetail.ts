@@ -5,6 +5,7 @@ import { addToCart as fetchAddToCart } from "@/api/carts.api";
 import { useAuthStore } from "@/store/authStore";
 import { useAlert } from "@/hooks/useAlert";
 import { addBookReview, fetchBookReview } from "@/api/review.api";
+import { useToast } from "./useToast";
  
 export const useBookDetail = (bookId: string | undefined) => {
     const [book, setBook] = useState<BookDetail | null>(null);
@@ -13,6 +14,8 @@ export const useBookDetail = (bookId: string | undefined) => {
 
     const { isloggedIn } = useAuthStore();
     const {showAlert} = useAlert();
+
+    const { showToast } = useToast();
 
     const likeToggle = () => {
         if (!isloggedIn) {
@@ -29,6 +32,7 @@ export const useBookDetail = (bookId: string | undefined) => {
                     liked: false,
                     likes: book.likes - 1,
                 });
+                showToast("좋아요가 취소되었습니다.");
             });
         } else {
             console.log(book.likes);
@@ -39,6 +43,7 @@ export const useBookDetail = (bookId: string | undefined) => {
                     likes: book.likes + 1,
                 });
             });
+            showToast("좋아요가 등록되었습니다.");
         }
     };
 
