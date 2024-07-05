@@ -35,7 +35,7 @@ function Login() {
                     <fieldset>
                         <InputText placeholder='이메일' 
                         inputType='email'
-                        {...register('email', {required: true})}
+                        {...register('email', {required: true})} inputMode="email"
                         />
                         {errors.email && 
                         <p className="error-text">
@@ -46,6 +46,7 @@ function Login() {
                         <InputText placeholder='비밀번호'
                         inputType='password'
                         {...register('password', {required: true})}
+                        inputMode='text'
                         />
                         {errors.password && 
                         <p className='error-text'>
